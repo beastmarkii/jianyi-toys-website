@@ -22,7 +22,7 @@
       <nav class="nav container">
         <a href="index.html" class="brand">
           <img src="assets/img/image1.png" alt="简依 JY" class="brand-logo" />
-          <span class="brand-name" data-i18n-html="brand.name">简依玩具<small>JIANYI TOYS</small></span>
+          <span class="brand-name" data-i18n-html="brand.name">简依玩具<small>JANE TOYS</small></span>
         </a>
         <button class="nav-toggle" aria-label="menu" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -48,7 +48,7 @@
           <img src="assets/img/image1.png" alt="简依 JY" class="footer-logo" />
           <span data-i18n="footer.company">东莞简依玩具有限公司</span>
         </div>
-        <p class="footer-copy" data-i18n="footer.copy">© 东莞简依玩具有限公司 · JIANYI TOYS.</p>
+        <p class="footer-copy" data-i18n="footer.copy">© 东莞简依玩具有限公司 · JANE TOYS.</p>
       </div>
     </footer>`;
 
