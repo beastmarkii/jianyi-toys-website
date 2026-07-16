@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>联系我们 · 东莞简依玩具有限公司</title>
+  <link rel="icon" href="assets/img/image1.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=10" />
+</head>
+<body data-page="contact">
+  <div id="app-header"></div>
+
+  <main>
+    <!-- Business process -->
+    <section id="how-we-work" class="section">
+      <div class="container">
+        <p class="section-index">07</p>
+        <h2 class="section-title" data-i18n="biz.title">合作流程</h2>
+        <p class="section-lead" data-i18n="biz.lead">从首次咨询到出货交付，六个步骤清晰透明。</p>
+        <ol class="biz-flow">
+          <li><span class="biz-no">1</span><div class="biz-body"><h3 data-i18n="biz.s1t">咨询洽谈</h3><p data-i18n="biz.s1d">通过表单或邮件发送需求：参考图、尺寸、材质、预计数量等。</p></div></li>
+          <li><span class="biz-no">2</span><div class="biz-body"><h3 data-i18n="biz.s2t">评估报价</h3><p data-i18n="biz.s2d">我们评估工艺与成本，尽快提供详细报价方案。</p></div></li>
+          <li><span class="biz-no">3</span><div class="biz-body"><h3 data-i18n="biz.s3t">打样确认</h3><p data-i18n="biz.s3d">支付样品费后，10 个工作日内完成样品并寄出，供您确认。</p></div></li>
+          <li><span class="biz-no">4</span><div class="biz-body"><h3 data-i18n="biz.s4t">签约下单</h3><p data-i18n="biz.s4d">样品确认后签订合同，按 T/T 条款支付定金，正式下单。</p></div></li>
+          <li><span class="biz-no">5</span><div class="biz-body"><h3 data-i18n="biz.s5t">批量生产</h3><p data-i18n="biz.s5d">开发完成后 60 天内交货，三道品检 + 成品 100% 全检。</p></div></li>
+          <li><span class="biz-no">6</span><div class="biz-body"><h3 data-i18n="biz.s6t">出货交付</h3><p data-i18n="biz.s6d">FOB 深圳交货，协助安排出口文件与国际物流。</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Trade terms -->
+    <section id="terms" class="section">
+      <div class="container">
+        <p class="section-index">08</p>
+        <h2 class="section-title" data-i18n="terms.title">贸易条款</h2>
+        <p class="section-lead" data-i18n="terms.lead">清晰透明的合作条件，让您快速评估与决策。</p>
+        <div class="cards terms-cards">
+          <article class="card"><div class="card-body"><h3 data-i18n="terms.t1">起订量 (MOQ)</h3><p class="term-value" data-i18n="terms.v1">2,000 件 / 款</p></div></article>
+          <article class="card"><div class="card-body"><h3 data-i18n="terms.t2">样品交期</h3><p class="term-value" data-i18n="terms.v2">10 个工作日</p></div></article>
+          <article class="card"><div class="card-body"><h3 data-i18n="terms.t3">量产交期</h3><p class="term-value" data-i18n="terms.v3">开发完成后 60 天内交货（10 万件以内；超过 10 万件酌情增加天数）</p></div></article>
+          <article class="card"><div class="card-body"><h3 data-i18n="terms.t4">样品费</h3><p class="term-value" data-i18n="terms.v4">12cm 以下 ¥1,000 / 20cm 以上 ¥2,000（其他尺寸请垂询），运费到付</p></div></article>
+          <article class="card"><div class="card-body"><h3 data-i18n="terms.t5">价格条款</h3><p class="term-value" data-i18n="terms.v5">FOB 深圳</p></div></article>
+          <article class="card"><div class="card-body"><h3 data-i18n="terms.t6">付款方式</h3><p class="term-value" data-i18n="terms.v6">T/T 电汇</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inquiry form -->
+    <section id="inquiry" class="section">
+      <div class="container">
+        <p class="section-index">09</p>
+        <h2 class="section-title" data-i18n="form.title">咨询表单</h2>
+        <p class="section-lead" data-i18n="form.lead">填写以下信息，我们将在 24 小时内回复您。</p>
+        <form id="inquiry-form" class="inquiry-form glass" novalidate>
+          <div class="form-grid">
+            <label><span data-i18n="form.name">姓名</span><input type="text" name="name" required /></label>
+            <label><span data-i18n="form.company">公司名称</span><input type="text" name="company" required /></label>
+            <label><span data-i18n="form.email">电子邮箱</span><input type="email" name="email" required /></label>
+            <label><span data-i18n="form.country">国家 / 地区</span><input type="text" name="country" /></label>
+            <label class="form-wide"><span data-i18n="form.qty">预计数量</span><input type="text" name="qty" /></label>
+            <label class="form-wide"><span data-i18n="form.msg">咨询内容</span><textarea name="msg" rows="5" required></textarea></label>
+          </div>
+          <button type="submit" class="btn btn-primary" data-i18n="form.send">发送咨询</button>
+          <p class="form-note" data-i18n="form.note">点击发送后将打开您的邮件程序，内容将发送至我们的商务邮箱。</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <p class="section-index">10</p>
+        <h2 class="section-title" data-i18n="faq.title">常见问题</h2>
+        <p class="section-lead" data-i18n="faq.lead">合作前最常被问到的问题，一次讲清楚。</p>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary><span data-i18n="faq.q1">起订量（MOQ）是多少？</span></summary>
+            <p data-i18n="faq.a1">每款 2,000 件起订。具体数量可在报价阶段与我们进一步确认。</p>
+          </details>
+          <details class="faq-item">
+            <summary><span data-i18n="faq.q2">打样需要多久？费用如何计算？</span></summary>
+            <p data-i18n="faq.a2">支付样品费后，10 个工作日内完成样品并寄出。样品费：12cm 以下 ¥1,000，20cm 以上 ¥2,000，其他尺寸请垂询；样品运费到付。</p>
+          </details>
+          <details class="faq-item">
+            <summary><span data-i18n="faq.q3">量产交期是多久？</span></summary>
+            <p data-i18n="faq.a3">开发完成后 60 天内交货（10 万件以内）。订单超过 10 万件时，需酌情增加生产天数。</p>
+          </details>
+          <details class="faq-item">
+            <summary><span data-i18n="faq.q4">付款与交货条件是什么？</span></summary>
+            <p data-i18n="faq.a4">付款方式为 T/T 电汇，交货条件为 FOB 深圳。我们协助安排出口文件与国际物流。</p>
+          </details>
+          <details class="faq-item">
+            <summary><span data-i18n="faq.q5">你们如何保护客户的设计与 IP？</span></summary>
+            <p data-i18n="faq.a5">我们长期为 Sanrio、Pop Mart 等品牌提供授权制造，严守 IP 授权与保密规范，可根据需要签署保密协议（NDA）。</p>
+          </details>
+          <details class="faq-item">
+            <summary><span data-i18n="faq.q6">品质如何保证？</span></summary>
+            <p data-i18n="faq.a6">原材料入库严检、三道过程品检、成品 100% 全检；并配合 SGS、BV 等第三方检测，符合 EN71、ASTM F963、GB6675 标准。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="cta">
+      <div class="container cta-inner">
+        <h2 class="cta-title" data-i18n="cta.title">诚邀合作 · 共创未来</h2>
+        <p class="cta-sub" data-i18n="cta.sub">15 年来，我们坚守品质为本、客户至上，以专业制造能力与严格品质管理赢得全球顶级品牌长期信赖。期待与您携手，共同创造更多优质产品。</p>
+        <div class="contact-cards contact-cards-single">
+          <div class="contact-card contact-card-accent">
+            <h3 data-i18n="cta.c3t">商务洽谈</h3>
+            <p class="contact-email"><a href="mailto:beastmarkii@gmail.com">beastmarkii@gmail.com</a></p>
+            <span class="contact-tag" data-i18n="cta.c3tag">欢迎来样定制 · 品牌代工</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+  <script src="i18n.js?v=10"></script>
+  <script src="layout.js?v=10"></script>
+  <script src="script.js?v=10"></script>
+</body>
+</html>
