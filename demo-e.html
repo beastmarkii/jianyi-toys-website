@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>시안 E · 소프트 프리미엄</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#eef1f4;              /* cool off-white */
+    --tint:#5b7a91;            /* dusty blue — the ONLY accent */
+    --tint-deep:#3f5b6e;
+    --tint-soft:#93a9b8;
+    --ink:#20272d;
+    --ink-soft:#63707a;
+    --glass:rgba(255,255,255,.62);
+    --glass-brd:rgba(255,255,255,.85);
+    --line:rgba(63,91,110,.16);
+    --blur:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    color:var(--ink);
+    font-family:"Inter","Noto Sans SC",sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.7;
+    background:var(--bg);
+    position:relative;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:-20%;z-index:-1;
+    background:
+      radial-gradient(700px 500px at 78% 8%, rgba(91,122,145,.20), transparent 60%),
+      radial-gradient(600px 520px at 12% 92%, rgba(91,122,145,.13), transparent 60%),
+      linear-gradient(160deg,#f2f5f7,#e7ecf0);
+    filter:saturate(1.02);
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    max-width:1120px;margin:18px auto 0;padding:14px 26px;
+    background:var(--glass);backdrop-filter:blur(var(--blur)) saturate(1.4);
+    -webkit-backdrop-filter:blur(var(--blur)) saturate(1.4);
+    border:1px solid var(--glass-brd);border-radius:999px;
+    box-shadow:0 16px 40px -26px rgba(40,60,75,.55);
+  }
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand .cn{font-weight:700;font-size:19px;letter-spacing:.02em}
+  .brand .en{font-size:11px;letter-spacing:.34em;color:var(--tint-deep);text-transform:uppercase}
+  nav{display:flex;gap:26px;font-size:13.5px;color:var(--ink-soft)}
+  nav a{color:inherit;text-decoration:none}
+  nav a.on{color:#fff;background:var(--tint);padding:7px 16px;border-radius:999px;font-weight:500}
+
+  .tag{font-size:12.5px;letter-spacing:.34em;color:var(--tint-deep);text-transform:uppercase;font-weight:600;display:block;margin-bottom:16px}
+  h1{font-weight:700;font-size:52px;letter-spacing:-.02em;line-height:1.12}
+  h1 .em{color:var(--tint-deep)}
+  .rule{width:52px;height:3px;border-radius:3px;background:var(--tint);margin:24px 0 20px}
+  .lead{max-width:600px;color:var(--ink-soft);font-size:17px;font-weight:400}
+
+  section{padding:66px 0}
+  .sec-head .num{font-size:12.5px;letter-spacing:.3em;color:var(--tint-soft);font-weight:600}
+  .sec-head h2{font-weight:700;font-size:32px;margin-top:8px;letter-spacing:-.01em}
+  .sec-head p{color:var(--ink-soft);margin-top:8px}
+
+  /* ---- FLOWCHART ---- */
+  .flow{margin-top:46px;position:relative}
+  .flow-row{display:flex;align-items:center;flex-wrap:wrap}
+  .node{
+    flex:1 1 0;min-width:118px;text-align:center;
+    background:var(--glass);backdrop-filter:blur(var(--blur));
+    -webkit-backdrop-filter:blur(var(--blur));
+    border:1px solid var(--glass-brd);border-radius:20px;
+    padding:26px 16px 22px;
+    box-shadow:0 20px 44px -30px rgba(40,60,75,.6);
+  }
+  .node .idx{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:44px;height:44px;border-radius:50%;margin-bottom:13px;
+    background:linear-gradient(150deg,var(--tint),var(--tint-deep));
+    color:#fff;font-weight:600;font-size:15px;
+    box-shadow:0 8px 18px -8px rgba(63,91,110,.7);
+  }
+  .node .nm{font-weight:600;font-size:15.5px}
+  .conn{flex:0 0 30px;display:flex;align-items:center;justify-content:center;color:var(--tint-soft)}
+  .conn svg{width:18px;height:18px}
+  @media(max-width:900px){
+    .flow-row{flex-direction:column}
+    .conn{transform:rotate(90deg);flex:0 0 26px}
+    .node{width:100%}
+  }
+
+  /* ---- quality cards ---- */
+  .q-grid{margin-top:46px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .q{
+    background:var(--glass);backdrop-filter:blur(var(--blur));
+    -webkit-backdrop-filter:blur(var(--blur));
+    border:1px solid var(--glass-brd);border-radius:22px;padding:30px 28px;
+    box-shadow:0 20px 44px -32px rgba(40,60,75,.6);
+  }
+  .q .dot{width:9px;height:9px;border-radius:50%;background:var(--tint);display:inline-block;margin-right:9px;vertical-align:middle}
+  .q h3{font-weight:600;font-size:18px;display:inline}
+  .q p{color:var(--ink-soft);font-size:14.5px;margin-top:13px}
+  @media(max-width:820px){.q-grid{grid-template-columns:1fr}}
+
+  footer{padding:48px 0;color:var(--ink-soft);font-size:13px;text-align:center;border-top:1px solid var(--line);margin-top:20px}
+  .badge{position:fixed;top:16px;left:16px;background:var(--tint-deep);color:#fff;font-size:12px;letter-spacing:.2em;padding:8px 16px;border-radius:999px;z-index:9}
+</style>
+</head>
+<body>
+  <div class="badge">시안 E · SOFT PREMIUM</div>
+  <header>
+    <div class="brand"><span class="cn">简依玩具</span><span class="en">Jane Toys</span></div>
+    <nav><a>关于我们</a><a>生产基地</a><a class="on">生产流程</a><a>品质管理</a><a>产品</a><a>合作品牌</a></nav>
+  </header>
+
+  <div class="wrap" style="padding-top:52px">
+    <span class="tag">Production Process</span>
+    <h1>生产<span class="em">流程</span></h1>
+    <div class="rule"></div>
+    <p class="lead">七道标准工序，环环相扣，确保每一件产品品质如一。从需求确认到包装出货，全程可控、透明。</p>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><span class="num">03 / PROCESS</span></div>
+      <div class="flow">
+        <div class="flow-row">
+          <div class="node"><span class="idx">01</span><div class="nm">需求确认</div></div>
+          <div class="conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="node"><span class="idx">02</span><div class="nm">打样开发</div></div>
+          <div class="conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="node"><span class="idx">03</span><div class="nm">物料采购</div></div>
+          <div class="conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="node"><span class="idx">04</span><div class="nm">裁剪生产</div></div>
+        </div>
+        <div class="flow-row" style="margin-top:22px">
+          <div class="node"><span class="idx">05</span><div class="nm">过程品控</div></div>
+          <div class="conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="node"><span class="idx">06</span><div class="nm">成品检验</div></div>
+          <div class="conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+          <div class="node"><span class="idx">07</span><div class="nm">包装出货</div></div>
+          <div class="conn" style="opacity:0"></div>
+          <div class="node" style="visibility:hidden"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:10px">
+    <div class="wrap">
+      <div class="sec-head"><span class="num">04 / QUALITY</span><h2>品质管理</h2><p>从原料到出货，全流程严控，确保每批产品 100% 合规达标。</p></div>
+      <div class="q-grid">
+        <div class="q"><span class="dot"></span><h3>原材料检验</h3><p>入库前严检面料色差、甲醛含量、填充物蓬松度，不合格一律退换。</p></div>
+        <div class="q"><span class="dot"></span><h3>过程品质管控</h3><p>初检、中检、终检三道关卡，问题产品即时标记隔离。</p></div>
+        <div class="q"><span class="dot"></span><h3>成品 100% 全检</h3><p>出货前全检，涵盖外观、尺寸与安全性能（拉力测试等）。</p></div>
+        <div class="q"><span class="dot"></span><h3>第三方检测</h3><p>配合 SGS、BV 等机构认证，符合 EN71、ASTM F963、GB6675 标准。</p></div>
+        <div class="q"><span class="dot"></span><h3>客诉快速响应</h3><p>24 小时内响应，48 小时提出解决方案，追溯根因持续改进。</p></div>
+        <div class="q"><span class="dot"></span><h3>品质数据追溯</h3><p>每批产品建立完整档案，物料批次、生产日期、QC 签核全程可追溯。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Dongguan JANE Toys Co., Ltd. · 시안 E 미리보기</footer>
+</body>
+</html>

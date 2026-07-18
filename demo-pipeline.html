@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>생산 파이프라인 흐름도 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f6f1e9; --card:#fbf8f2; --ink:#2b241d; --ink-soft:#6f6558;
+    --line:#e0d6c6; --accent:#a9764c; --accent-deep:#8a5c37; --gold:#b89b6a;
+    --pipe:#efe4d3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:radial-gradient(1200px 640px at 82% -12%, #efe7d8 0%, transparent 62%), var(--bg);
+    color:var(--ink); font-family:"Noto Sans SC",sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.7;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:0 44px}
+  header{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:30px 44px}
+  .brand{display:flex;align-items:baseline;gap:12px}
+  .brand .cn{font-family:"Noto Serif SC",serif;font-weight:700;font-size:22px;letter-spacing:.06em}
+  .brand .en{font-family:"Cormorant Garamond",serif;font-size:15px;letter-spacing:.42em;color:var(--accent-deep);text-transform:uppercase}
+  nav{display:flex;gap:30px;font-size:14px;color:var(--ink-soft)}
+  nav a{color:inherit;text-decoration:none}
+  nav a.on{color:var(--ink);font-weight:500;position:relative}
+  nav a.on::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:1.5px;background:var(--accent)}
+
+  .hero{padding-top:26px}
+  .tag{font-family:"Cormorant Garamond",serif;font-size:15px;letter-spacing:.5em;color:var(--accent-deep);text-transform:uppercase;display:block;margin-bottom:14px}
+  h1{font-family:"Noto Serif SC",serif;font-weight:700;font-size:54px;line-height:1.14}
+  h1 .em{color:var(--accent-deep)}
+  .rule{width:56px;height:2px;background:var(--accent);margin:26px 0 22px}
+  .lead{max-width:640px;color:var(--ink-soft);font-size:17px;font-weight:300}
+
+  /* ============ PIPELINE ============ */
+  .pipeline{position:relative;margin:70px 0 30px;padding:20px 0}
+  .rail{display:flex;align-items:flex-start;justify-content:space-between;position:relative;gap:8px}
+  /* the flowing pipe behind the nodes */
+  .rail::before{
+    content:"";position:absolute;left:44px;right:44px;top:44px;height:10px;
+    border-radius:999px;
+    background:
+      linear-gradient(90deg,var(--accent) 0 12%, transparent 12% 100%) 0/28px 100% repeat-x,
+      var(--pipe);
+    background-blend-mode:normal;
+    box-shadow:inset 0 1px 2px rgba(120,90,55,.18);
+  }
+  /* animated flow shimmer */
+  .rail::after{
+    content:"";position:absolute;left:44px;right:44px;top:44px;height:10px;border-radius:999px;
+    background:linear-gradient(90deg,transparent 0, rgba(255,255,255,.85) 45%, transparent 90%);
+    background-size:220px 100%;background-repeat:no-repeat;
+    animation:flow 3.4s linear infinite;
+    mix-blend-mode:screen;opacity:.7;
+  }
+  @keyframes flow{0%{background-position:-240px 0}100%{background-position:calc(100% + 240px) 0}}
+
+  .stage{position:relative;z-index:2;flex:1 1 0;display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
+  .medallion{
+    width:88px;height:88px;border-radius:50%;background:var(--card);
+    border:1.5px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 16px 34px -20px rgba(110,80,45,.55), 0 0 0 8px var(--bg);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .medallion svg{width:34px;height:34px;stroke:var(--accent-deep);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .stage:hover .medallion{transform:translateY(-6px);box-shadow:0 24px 40px -18px rgba(110,80,45,.6),0 0 0 8px var(--bg)}
+  .num{
+    margin-top:16px;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:15px;
+    letter-spacing:.16em;color:var(--gold);
+  }
+  .nm{font-family:"Noto Serif SC",serif;font-weight:600;font-size:17px;margin-top:4px;letter-spacing:.02em}
+  .desc{font-size:12.5px;color:var(--ink-soft);font-weight:300;margin-top:6px;max-width:130px}
+
+  @media(max-width:920px){
+    .rail{flex-direction:column;gap:0;padding-left:6px}
+    .rail::before,.rail::after{left:49px;right:auto;top:20px;bottom:20px;width:10px;height:auto}
+    .rail::before{background:
+      linear-gradient(180deg,var(--accent) 0 12%, transparent 12% 100%) 0/100% 28px repeat-y, var(--pipe);}
+    @keyframes flow{0%{background-position:0 -240px}100%{background-position:0 calc(100% + 240px)}}
+    .rail::after{background:linear-gradient(180deg,transparent 0,rgba(255,255,255,.85) 45%,transparent 90%);background-size:100% 220px}
+    .stage{flex-direction:row;align-items:center;text-align:left;gap:22px;padding:16px 0}
+    .desc{max-width:none}
+    .num{margin-top:0}
+  }
+
+  footer{padding:46px 0;border-top:1px solid var(--line);margin-top:40px;color:var(--ink-soft);font-size:13px;text-align:center;letter-spacing:.05em}
+  .badge{position:fixed;top:16px;left:16px;background:var(--ink);color:var(--bg);font-size:12px;letter-spacing:.15em;padding:8px 16px;border-radius:2px;z-index:9}
+</style>
+</head>
+<body>
+  <div class="badge">생산 파이프라인 시안</div>
+  <header>
+    <div class="brand"><span class="cn">简依玩具</span><span class="en">Jane Toys</span></div>
+    <nav><a>关于我们</a><a>生产基地</a><a class="on">生产流程</a><a>品质管理</a><a>产品</a><a>合作品牌</a></nav>
+  </header>
+
+  <div class="wrap hero">
+    <span class="tag">Production Pipeline</span>
+    <h1>生产<span class="em">流程</span></h1>
+    <div class="rule"></div>
+    <p class="lead">从需求确认到包装出货，七道工序串联为一条完整的生产管线，环环相扣、透明可控，确保每一件产品品质如一。</p>
+  </div>
+
+  <div class="wrap">
+    <div class="pipeline">
+      <div class="rail">
+        <div class="stage">
+          <div class="medallion"><svg viewBox="0 0 24 24"><path d="M9 4h6a1 1 0 0 1 1 1v0H8v0a1 1 0 0 1 1-1z"/><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 11h6M9 15h4"/></svg></div>
+          <div class="num">01</div><div class="nm">需求确认</div><div class="desc">参考图 · 尺寸 · 材质 · 数量确认</div>
+        </div>
+        <div class="stage">
+          <div class="medallion"><svg viewBox="0 0 24 24"><path d="M4 20l4-1 9.5-9.5a2.1 2.1 0 0 0-3-3L5 16l-1 4z"/><path d="M13.5 6.5l3 3"/></svg></div>
+          <div class="num">02</div><div class="nm">打样开发</div><div class="desc">资深版师打样与验样</div>
+        </div>
+        <div class="stage">
+          <div class="medallion"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg></div>
+          <div class="num">03</div><div class="nm">物料采购</div><div class="desc">优质面料与填充物入库</div>
+        </div>
+        <div class="stage">
+          <div class="medallion"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><path d="M8 7.5L20 17M8 16.5L20 7"/></svg></div>
+          <div class="num">04</div><div class="nm">裁剪生产</div><div class="desc">精细手工缝制与成型</div>
+        </div>
+        <div class="stage">
+          <div class="medallion"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/><path d="M9 11l1.5 1.5L14 9"/></svg></div>
+          <div class="num">05</div><div class="nm">过程品控</div><div class="desc">初检 · 中检 · 终检三道关</div>
+        </div>
+        <div class="stage">
+          <div class="medallion"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.4-3 7.5-7 8.9C8 17.5 5 14.4 5 10V6l7-3z"/><path d="M9 11l2 2 4-4"/></svg></div>
+          <div class="num">06</div><div class="nm">成品检验</div><div class="desc">出货前 100% 全检</div>
+        </div>
+        <div class="stage">
+          <div class="medallion"><svg viewBox="0 0 24 24"><path d="M3 8l9-4 9 4v8l-9 4-9-4V8z"/><path d="M3 8l9 4 9-4M12 12v8"/></svg></div>
+          <div class="num">07</div><div class="nm">包装出货</div><div class="desc">FOB 深圳交货 · 出口物流</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2026 Dongguan JANE Toys Co., Ltd. · 파이프라인 흐름도 미리보기 (품질관리는 별도 페이지)</footer>
+</body>
+</html>
