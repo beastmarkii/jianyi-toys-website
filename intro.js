@@ -44,31 +44,21 @@
     const scaleTo = Math.max(0.04, rect.width / cloneW);
 
     const frames = [
-      // 왼쪽 밖에서 손잡고 달려 들어옴 (좌우 흔들며) / run in from off-screen left
-      { transform: "translate(-135vw,0) rotate(-10deg) scale(.78)", offset: 0 },
-      { transform: "translate(-60vw,-4px) rotate(8deg) scale(.9)",  offset: 0.12 },
-      { transform: "translate(-26vw,0) rotate(-7deg) scale(1)",     offset: 0.22 },
-      { transform: "translate(6vw,-6px) rotate(6deg) scale(1.07)",  offset: 0.30 },
-      { transform: "translate(0,0) rotate(0) scale(1.05)",          offset: 0.38 }, // 중앙 도착
-      // 인사(꾸벅) 2회 / greeting bows
-      { transform: "translate(0,20px) scale(1.05,.92)",  offset: 0.47 },
-      { transform: "translate(0,-4px) scale(1.05,1)",    offset: 0.54 },
-      { transform: "translate(0,16px) scale(1.05,.94)",  offset: 0.61 },
-      { transform: "translate(0,0) scale(1.05,1)",       offset: 0.67 },
-      // 손 흔들듯 좌우 / little wave
-      { transform: "translate(0,0) rotate(-8deg) scale(1.05)", offset: 0.72 },
-      { transform: "translate(0,0) rotate(8deg) scale(1.05)",  offset: 0.77 },
-      { transform: "translate(0,0) rotate(0) scale(1.05)",     offset: 0.82 },
-      // 좌측 상단 로고 자리로 날아가 착지 / fly up to header logo slot
-      { transform: `translate(${dx}px,${dy}px) scale(${scaleTo})`, opacity: 1, offset: 0.96 },
-      // 자리에 딱 맞춰 스며들며 사라짐 / melt into place
+      // 중앙에서 고요히 떠오름 / calm fade-in, centered
+      { transform: "translate(0,18px) scale(1.10)", opacity: 0, offset: 0 },
+      { transform: "translate(0,0) scale(1.06)",    opacity: 1, offset: 0.16 },
+      // 잠시 머묾 / hold
+      { transform: "translate(0,0) scale(1.06)",    opacity: 1, offset: 0.55 },
+      // 좌측 상단 로고 자리로 미끄러져 착지 / glide to header logo slot
+      { transform: `translate(${dx}px,${dy}px) scale(${scaleTo})`, opacity: 1, offset: 0.93 },
+      // 자리에 스며들며 사라짐 / dissolve into place
       { transform: `translate(${dx}px,${dy}px) scale(${scaleTo})`, opacity: 0, offset: 1 },
     ];
 
-    const DURATION = 6500;
+    const DURATION = 4200;
     const anim = clone.animate(frames, {
       duration: DURATION,
-      easing: "cubic-bezier(.34,1.2,.4,1)",
+      easing: "cubic-bezier(.4,0,.2,1)",
       fill: "forwards",
     });
 
@@ -88,7 +78,7 @@
     };
 
     // 착지 순간 실제 헤더 로고를 미리 표시해 자연스럽게 겹침 / reveal real logo at touchdown
-    setTimeout(() => { brandLogo.style.visibility = "visible"; }, Math.round(DURATION * 0.96));
+    setTimeout(() => { brandLogo.style.visibility = "visible"; }, Math.round(DURATION * 0.93));
     anim.finished.then(() => cleanup(true)).catch(() => cleanup(false));
     // 안전장치: finished 가 어떤 이유로든 안 풀려도 로고가 숨겨진 채 남지 않도록
     setTimeout(() => cleanup(true), DURATION + 900);

@@ -21,7 +21,7 @@
     <header class="site-header">
       <nav class="nav container">
         <a href="index.html" class="brand">
-          <img src="assets/img/image1.png" alt="简依 JY" class="brand-logo" />
+          <img src="assets/img/logo.svg" alt="简依 JY" class="brand-logo" />
           <span class="brand-name" data-i18n-html="brand.name">简依玩具<small>JANE TOYS</small></span>
         </a>
         <button class="nav-toggle" aria-label="menu" aria-expanded="false">
@@ -45,7 +45,7 @@
     <footer class="site-footer">
       <div class="container footer-inner">
         <div class="footer-brand">
-          <img src="assets/img/image1.png" alt="简依 JY" class="footer-logo" />
+          <img src="assets/img/logo.svg" alt="简依 JY" class="footer-logo" />
           <span data-i18n="footer.company">东莞简依玩具有限公司</span>
         </div>
         <p class="footer-copy" data-i18n="footer.copy">© 东莞简依玩具有限公司 · JANE TOYS.</p>
